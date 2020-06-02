@@ -110,6 +110,35 @@ public class Definition<E> implements LinkedListADT<E> {
         return temp;
     }
 
+
+
+    @Override
+    public void middle() {
+        int index = size / 2;
+        System.out.println(this.getNode(index).getData());
+    }
+    public Node<E> reverse(Node<E> head){
+        Node<E> temp = head;
+        Node<E> prev = null;
+        while(temp != null){
+            Node<E> another = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = another;
+        }
+        return prev;
+    }
+    public void printReverse(){
+        Node<E> temp = reverse(this.head);
+        int i = 0;
+        System.out.print("[");
+        while(temp != null){
+            System.out.print(temp.getData() + (i < size - 1 ? ", " : ""));
+            temp = temp.getNext();
+            i++;
+        }
+        System.out.println("]");
+    }
     @Override
     public void print() {
         System.out.print("[");
